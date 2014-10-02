@@ -9,9 +9,11 @@
     - silversearcher-ag
 
 - name: Sync dotfiles
+  sudo: False
   synchronize: src=~/Code/dotfiles dest=~
 
 - name: Sync .oh-my-zsh
+  sudo: False
   synchronize: src=~/.oh-my-zsh dest=~
 
 - name: Install fasd
@@ -19,6 +21,7 @@
   copy: src=/usr/local/bin/fasd dest=/usr/local/bin/fasd owner=root group=root mode=0755
 
 - name: Link dotfiles
+  sudo: False
   file:
     src: ~/dotfiles/{{ item }}
     dest: ~/.{{ item }}

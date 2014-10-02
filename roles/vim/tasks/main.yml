@@ -1,10 +1,12 @@
 ---
 - name: Make .vim directory
+  sudo: False
   file:
     path: ~/.vim
     state: directory
 
 - name: Sync dirs
+  sudo: False
   synchronize: src=~/.vim/{{ item }} dest=~/.vim
   with_items:
     - bundle
