@@ -3,5 +3,5 @@
   gather_facts: False
   roles:
     - common
-    # - vim
-    # - zsh
+    - vim
+    - zsh

@@ -1,3 +1,4 @@
 ---
 - name: Change shell
+  sudo: True
   user: name=vagrant shell=/usr/bin/zsh
