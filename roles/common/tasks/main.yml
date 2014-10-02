@@ -1,0 +1,30 @@
+---
+- name: Install the debs
+  sudo: True
+  apt: name={{ item }} state=latest update_cache=yes
+  with_items:
+    - zsh
+    - tree
+    - htop
+    - silversearcher-ag
+
+- name: Sync dotfiles
+  synchronize: src=~/Code/dotfiles dest=~
+
+- name: Sync .oh-my-zsh
+  synchronize: src=~/.oh-my-zsh dest=~
+
+- name: Install fasd
+  sudo: True
+  copy: src=/usr/local/bin/fasd dest=/usr/local/bin/fasd owner=root group=root mode=0755
+
+- name: Link dotfiles
+  file:
+    src: ~/dotfiles/{{ item }}
+    dest: ~/.{{ item }}
+    state: link
+  with_items:
+    - zshrc
+    - zprofile
+    - inputrc
+    - vimrc

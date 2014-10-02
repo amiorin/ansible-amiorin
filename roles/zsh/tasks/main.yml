@@ -1,0 +1,3 @@
+---
+- name: Change shell
+  user: name=vagrant shell=/usr/bin/zsh

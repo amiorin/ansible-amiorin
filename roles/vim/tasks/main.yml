@@ -1,0 +1,12 @@
+---
+- name: Make .vim directory
+  file:
+    path: ~/.vim
+    state: directory
+
+- name: Sync dirs
+  synchronize: src=~/.vim/{{ item }} dest=~/.vim
+  with_items:
+    - bundle
+    - eclim
+    - plugin
