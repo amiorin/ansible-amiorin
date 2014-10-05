@@ -23,6 +23,7 @@
        dest=~/.linuxbrew
 
 - name: Install brew packages
+  sudo: False
   command: ~/.linuxbrew/bin/brew install {{ item }}
   with_items:
     - fasd
