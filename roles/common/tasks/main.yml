@@ -3,22 +3,18 @@
   sudo: True
   apt: name={{ item }} state=latest update_cache=yes
   with_items:
-    - zsh
-    - tree
-    - htop
-    - silversearcher-ag
+    - ngrep
+    - sysstat
 
 - name: Sync dotfiles
   sudo: False
   synchronize: src=~/Code/dotfiles dest=~
+  tags: dotfiles
 
 - name: Sync .oh-my-zsh
   sudo: False
   synchronize: src=~/.oh-my-zsh dest=~
-
-- name: Install fasd
-  sudo: True
-  copy: src=/usr/local/bin/fasd dest=/usr/local/bin/fasd owner=root group=root mode=0755
+  tags: dotfiles
 
 - name: Link dotfiles
   sudo: False
@@ -31,3 +27,4 @@
     - zprofile
     - inputrc
     - vimrc
+  tags: dotfiles

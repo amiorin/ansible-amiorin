@@ -1,0 +1,31 @@
+---
+- name: Install the debs
+  sudo: True
+  apt: name={{ item }} state=latest update_cache=yes
+  with_items:
+    - build-essential
+    - curl
+    - git
+    - m4
+    - ruby
+    - texinfo
+    - libbz2-dev
+    - libcurl4-openssl-dev
+    - libexpat-dev
+    - libncurses-dev
+    - libncursesw5-dev
+    - zlib1g-dev
+    - python-dev
+
+- name: Install linuxbrew
+  sudo: False
+  git: repo=https://github.com/Homebrew/linuxbrew.git
+       dest=~/.linuxbrew
+
+- name: Install brew packages
+  command: ~/.linuxbrew/bin/brew install {{ item }}
+  with_items:
+    - fasd
+    - tree
+    - htop
+    - the_silver_searcher

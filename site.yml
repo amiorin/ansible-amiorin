@@ -3,5 +3,6 @@
   gather_facts: False
   roles:
     - common
+    - linuxbrew
     - vim
     - zsh

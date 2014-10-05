@@ -1,4 +1,16 @@
 ---
+- name: Install zsh
+  sudo: False
+  command: ~/.linuxbrew/bin/brew install {{ item }}
+  with_items:
+    - zsh
+
+- name: Copy /etc/shells
+  sudo: True
+  template:
+    src=shells
+    dest=/etc/shells
+
 - name: Change shell
   sudo: True
-  user: name=vagrant shell=/usr/bin/zsh
+  user: name=vagrant shell=/home/vagrant/.linuxbrew/bin/zsh
