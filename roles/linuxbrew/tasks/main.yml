@@ -24,7 +24,7 @@
 
 - name: Install brew packages
   sudo: False
-  command: ~/.linuxbrew/bin/brew install {{ item }}
+  command: ~/.linuxbrew/bin/brew install -v {{ item }}
   with_items:
     - fasd
     - tree

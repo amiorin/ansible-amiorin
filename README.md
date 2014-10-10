@@ -9,6 +9,10 @@ and it uses ``linuxbrew`` to install new software.
 * virtualbox
 * root access to the target machine (I'm working to make it optional)
 
+```sh
+1GB of ram for compiling the_silver_searcher
+```
+
 ## Instructions
 ```sh
 sudo easy_install pip
