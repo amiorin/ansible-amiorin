@@ -1,0 +1,13 @@
+diff --git a/Library/Homebrew/download_strategy.rb b/Library/Homebrew/download_strategy.rb
+index 911401a..0bbb616 100644
+--- a/Library/Homebrew/download_strategy.rb
++++ b/Library/Homebrew/download_strategy.rb
+@@ -182,7 +182,7 @@ class CurlDownloadStrategy < AbstractDownloadStrategy
+   private
+ 
+   def curl(*args)
+-    args << '--connect-timeout' << '5' unless mirrors.empty?
++    args << '--connect-timeout' << '50' unless mirrors.empty?
+     super
+   end
+ 

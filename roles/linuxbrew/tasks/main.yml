@@ -22,6 +22,17 @@
   git: repo=https://github.com/Homebrew/linuxbrew.git
        dest=~/.linuxbrew
 
+- name: Copy linuxbrew patch
+  sudo: False
+  copy: src={{ patch_file }} dest=~/.linuxbrew/{{ patch_file }}
+
+- name: Patch linuxbrew
+  sudo: False
+  command: creates={{ patch_applied }} chdir=~/.linuxbrew {{ item }}
+  with_items:
+    - git apply {{ patch_file }}
+    - touch {{ patch_applied }}
+
 - name: Install brew packages
   sudo: False
   command: ~/.linuxbrew/bin/brew install -v {{ item }}
@@ -30,3 +41,10 @@
     - tree
     - htop
     - the_silver_searcher
+    - cmake
+
+- name: Rebuild YouCompleteMe
+  sudo: False
+  shell: chdir=~/.vim/bundle/YouCompleteMe {{ item }}
+  with_items:
+    - eval `~/.linuxbrew/bin/brew --env` && ./install.sh
