@@ -42,9 +42,3 @@
     - htop
     - the_silver_searcher
     - cmake
-
-- name: Rebuild YouCompleteMe
-  sudo: False
-  shell: chdir=~/.vim/bundle/YouCompleteMe {{ item }}
-  with_items:
-    - eval `~/.linuxbrew/bin/brew --env` && ./install.sh
