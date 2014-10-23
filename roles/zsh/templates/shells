@@ -5,4 +5,4 @@
 /bin/rbash
 /usr/bin/tmux
 /usr/bin/screen
-/home/vagrant/.linuxbrew/bin/zsh
+/home/{{ ansible_ssh_user }}/.linuxbrew/bin/zsh

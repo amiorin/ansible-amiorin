@@ -13,4 +13,4 @@
 
 - name: Change shell
   sudo: True
-  user: name=vagrant shell=/home/vagrant/.linuxbrew/bin/zsh
+  user: name={{ ansible_ssh_user }} shell=/home/{{ ansible_ssh_user}}/.linuxbrew/bin/zsh

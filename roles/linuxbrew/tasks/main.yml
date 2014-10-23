@@ -16,6 +16,7 @@
     - libncursesw5-dev
     - zlib1g-dev
     - python-dev
+    - cmake
 
 - name: Install linuxbrew
   sudo: False
@@ -41,4 +42,3 @@
     - tree
     - htop
     - the_silver_searcher
-    - cmake
