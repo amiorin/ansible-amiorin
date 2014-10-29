@@ -27,11 +27,12 @@
   sudo: False
   copy: src={{ patch_file }} dest=~/.linuxbrew/{{ patch_file }}
 
-- name: Patch linuxbrew
+- name: Patch linuxbrew and tap peco
   sudo: False
   command: creates={{ patch_applied }} chdir=~/.linuxbrew {{ item }}
   with_items:
     - git apply {{ patch_file }}
+    - bin/brew tap peco/peco
     - touch {{ patch_applied }}
 
 - name: Install brew packages
@@ -42,3 +43,4 @@
     - tree
     - htop
     - the_silver_searcher
+    - peco

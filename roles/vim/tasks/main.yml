@@ -1,17 +1,29 @@
 ---
+- name: Install vim
+  sudo: True
+  apt: name={{ item }} state=latest update_cache=yes
+  with_items:
+    - vim
+
+- name: Remove ~/.vim directory
+  sudo: False
+  file:
+    path: ~/.vim
+    state: absent
+
 - name: Make .vim directory
   sudo: False
   file:
     path: ~/.vim
     state: directory
 
-- name: Sync dirs
+- name: Create archive
   sudo: False
-  synchronize: src=~/.vim/{{ item }} dest=~/.vim
-  with_items:
-    - bundle
-    - eclim
-    - plugin
+  local_action: command chdir=~/.vim tar cvf {{ vim_archive }} bundle eclim plugin
+
+- name: Unpack archive
+  sudo: False
+  unarchive: src={{ vim_archive }} dest=/home/{{ ansible_ssh_user }}/.vim
 
 - name: Rebuild YouCompleteMe
   sudo: False
