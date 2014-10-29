@@ -1,10 +1,4 @@
 ---
-- name: Install vim
-  sudo: True
-  apt: name={{ item }} state=latest update_cache=yes
-  with_items:
-    - vim
-
 - name: Remove ~/.vim directory
   sudo: False
   file:
